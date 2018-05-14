@@ -5,6 +5,9 @@ namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+ /**
+     * @Route("/pizza")
+     */
 class PizzaController extends Controller
 {
     /**
@@ -26,40 +29,40 @@ class PizzaController extends Controller
 
 
    /**
-     * @Route("/pizza/nuevo", name="pizza_nuevo")
+     * @Route("/nuevo", name="pizza_nuevo")
      */
     public function nuevaPizza()
     {
     	
-
         return $this->render('pizza/nuevo.html.twig', [
            
         ]);
     }
     /**
-     * @Route("/pizza/editar", name="pizza_editar")
+     * @Route("/editar", name="pizza_editar")
      */
     public function editarPizza()
     {
+
     	$vectorlocal = array("SanVicente", "Alburquerque", "LaCodosera");
 
-        return $this->render('pizza/editar.html.twig', [
-            'localidades' => $vectorlocal
-        ]);
+        return $this->render('pizza/editar.html.twig', 
+            ['localidades' => $vectorlocal
+
+            ]);
     }
     /**
-     * @Route("/pizza/mostrar", name="pizza_mostrar")
+     * @Route("/mostrar", name="pizza_mostrar")
      */
     public function mostrarPizza()
     {
-    	
         return $this->render('pizza/mostrar.html.twig', [
             
         ]);
     }
     
      /**
-     * @Route("/pizza/calcular/{parametro}", name="pizza_calcular", requeriments={"precio"="\d+"})
+     * @Route("/calcular/{precio}", name="pizza_calcular", requirements={"precio"="\d+"})
      */
     public function calcularPizza($precio)
     {
