@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+
+	<h1>Categoria de los productos</h1>
+
+	<ul>
+	    {% for categoria in vectorcategorias %}
+	        <li>{{ categoria.nombre }} </li>
+	    {% endfor %}
+	</ul>
+	<a href=" {{ path('categoria_nuevo')}}">Añadir categoria</a>
+
+{% endblock %}

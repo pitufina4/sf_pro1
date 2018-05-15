@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
 
 
+
 {% block body %}
 
+ <h1>Listado de personas</h1>
 
-{{ form_start(formulario, {'attr': {'novalidate': 'novalidate'}}) }}
-
-{{ form_widget(formulario) }}
-
-{{ form_end(formulario) }}
-
-
+	<ul>
+	    {% for persona in listapersonas %}
+	        <li>{{ persona.nombre }} - {{ persona.edad }} - {{ persona.telefono }} - {{ persona.ciudad }} </li>
+	    {% endfor %}
+	</ul>
+	<a href=" {{ path('persona_nuevo')}}">Añadir persona</a>
 
 {% endblock %}

@@ -14,6 +14,27 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class PersonaController extends Controller
 
 {
+
+
+    /**
+     * @Route("/lista", name="persona_lista")
+     */
+    public function listado()
+
+    {
+
+
+        $repo = $this-> getDoctrine()->getRepository(Persona::class);
+        $personas = $repo->findAll();
+
+        
+        return $this->render ('persona/index.html.twig', [
+            'listapersonas' => $personas,
+        ]);
+    }
+
+
+
     /**
     * @Route("/nuevo", name="persona_nuevo")
      */
@@ -28,19 +49,23 @@ class PersonaController extends Controller
 
     	if ($formu->isSubmitted()) {
 
-		dump($persona);
 
-			return $this->render('persona/final.html.twig', [
-			            
-			]);    		
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($persona);
+            $entityManager->flush();
+		
+
+			return $this->redirectToRoute('persona_lista');      
+			    		
     	}
 
-        return $this->render('persona/index.html.twig', [
+        return $this->render('persona/nuevo.html.twig', [
             'formulario' => $formu->createView(),
 
         ]);
 
     }
+
 
 }
 

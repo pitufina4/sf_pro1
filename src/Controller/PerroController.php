@@ -31,6 +31,7 @@ class PerroController extends Controller
             'vectorperros' => $vectorperros,
         ]);
     }
+    
     /**
      * @Route("/nuevo", name="perro_nuevo")
      */
