@@ -49,16 +49,32 @@ class ProductoController extends Controller
     /**
      * @Route("/lista", name="producto_lista")
      */
-    public function listado()
+    public function listado(Request $request)
 
     {
 
+
+        $producto = new Producto();
+
+        $formu = $this->createForm(ProductoType::class, $producto);
+        $formu->handleRequest($request);
+
+        if ($formu->isSubmitted()) {
+
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($producto);
+            $entityManager->flush();
+             
+                        
+        }
+
         $repo = $this-> getDoctrine()->getRepository(Producto::class);
         $productos = $repo->findAll();
-
         
         return $this->render ('producto/index.html.twig', [
             'vectorproductos' => $productos,
+            'formulario' => $formu->createView()
         ]);
     }
 
