@@ -1,0 +1,18 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+
+
+
+
+
+
+body {
+
+	background-color: blue;
+	color: white;
+}
+h1{
+
+	font-weight: bold;
+	
+}

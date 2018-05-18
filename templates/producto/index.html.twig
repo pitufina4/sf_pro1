@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
 
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{ asset('build/appstyle.css') }}">
+{% endblock %}
 
 {% block body %}
 
@@ -9,15 +13,23 @@
 
 	<ul>
 	    {% for producto in vectorproductos %}
-	        <li>{{ producto.nombre }} - {{ producto.precio }} - {{ producto.categoria.nombre }} {{ dump(producto.categoria) }}</li>
+	        <li>{{ producto.nombre }} - {{ producto.precio }} - {{ producto.categoria.nombre }} {#{{ dump(producto.categoria) }}#}
+	        </li>
 	    {% endfor %}
 	</ul>
 
-	{{ dump(vectorproductos) }}
+	{#{{ dump(vectorproductos) }}#}
 	
 	
 	<a href=" {{ path('producto_nuevo')}}">Añadir producto</a>
-	<a href=" {{ path('categoria_lista')}}">Lista de categorias</a>
-	}
+	<a href=" {{ path('categoria_lista')}}">Lista de categorias</a><br>
+	<button type="button" class="btn btn-info">Info</button>
+	<button type="button" class="btn btn-info">Danger</button>
+
+{% endblock %}
+
+{% block javascripts %}
+
+<script src="{{ asset('build/app.js') }}"></script>
 
 {% endblock %}
