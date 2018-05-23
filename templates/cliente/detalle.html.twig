@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+
+ <h1>Listado de clientes<h1>
+ 
+
+{{ cliente.nombre }} - {{ cliente.direccion }} - {{ cliente.cp }} - {{ cliente.ciudad }}
+
+	<ul>
+	    {% for mascota in cliente.mascotas %}
+	        <li>{{ mascota.nombre }} - {{ mascota.animal }} - {{ mascota.fechanac|date('Y-m-d')}} - {{mascota.consultas }}</li>
+	    {% endfor %}
+
+	    <ul>
+	    {% for consulta in mascota.consultas %}
+	        <li>{{ consulta.titulo }} - {{ consulta.fechahora|date('Y-m-d')}} - {{ consulta.descripcion }} - {{ consulta.importe }} - {{ consulta.mascota }}</li>
+
+	    {% endfor %}
+
+		</ul>
+	</ul>
+
+
+	<a href=" {{ path('cliente_detalle')}}">Añadir mascota</a>
+	<a href=" {{ path('cliente_detalle')}}">Añadir consulta</a>
+{% endblock %}

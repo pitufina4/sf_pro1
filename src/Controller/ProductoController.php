@@ -69,7 +69,7 @@ class ProductoController extends Controller
                         
         }
 
-        $repo = $this-> getDoctrine()->getRepository(Producto::class);
+        $repo = $this->getDoctrine()->getRepository(Producto::class);
         $productos = $repo->findAll();
         
         return $this->render ('producto/index.html.twig', [
