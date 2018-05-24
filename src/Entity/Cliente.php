@@ -52,6 +52,10 @@ class Cliente
     {
         return $this->id;
     }
+    public function getGastoMedio ()
+    {
+        
+    }
 
     public function getNombre(): ?string
     {

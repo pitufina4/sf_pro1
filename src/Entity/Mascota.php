@@ -52,6 +52,11 @@ class Mascota
     {
         return $this->id;
     }
+    public function getGastoMedio ()
+    {
+        
+    }
+
 
     public function getNombre(): ?string
     {

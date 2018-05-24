@@ -11,19 +11,26 @@
 
 	<ul>
 	    {% for mascota in cliente.mascotas %}
-	        <li>{{ mascota.nombre }} - {{ mascota.animal }} - {{ mascota.fechanac|date('Y-m-d')}} - {{mascota.consultas }}</li>
-	    {% endfor %}
+	        <li>
+	        	{{ mascota.nombre }} - {{ mascota.animal }} - {{ mascota.fechanac|date('Y-m-d')}} 
+		    
+		    	</ul>
+			    {% for consulta in mascota.consultas %}
+			        <li>{{ consulta.titulo }} - {{ consulta.fechahora|date('Y-m-d')}} - {{ consulta.descripcion }} - {{ consulta.importe }} </li>
 
-	    <ul>
-	    {% for consulta in mascota.consultas %}
-	        <li>{{ consulta.titulo }} - {{ consulta.fechahora|date('Y-m-d')}} - {{ consulta.descripcion }} - {{ consulta.importe }} - {{ consulta.mascota }}</li>
+			    {% endfor %}
+				
 
-	    {% endfor %}
-
-		</ul>
+				</ul>
+			</li>
+		{% endfor %}
+		
 	</ul>
 
 
-	<a href=" {{ path('cliente_detalle')}}">Añadir mascota</a>
-	<a href=" {{ path('cliente_detalle')}}">Añadir consulta</a>
+	<a href=" {{ path('cliente_detalle', {'id': 1})}}">Añadir mascota</a>
+
+
+{{ dump(cliente) }}
+
 {% endblock %}

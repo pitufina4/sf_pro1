@@ -3,8 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Mascota;
-use App\Entity\Consulta;
+use App\Entity\Cliente;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -22,6 +23,12 @@ class MascotaType extends AbstractType
                'format' => 'dd MM yyyy',
                'required' => true
             ))
+            ->add('cliente',EntityType::class,array(
+            'class' => Cliente::class,
+            'choice_label' => function ($cliente) {
+                return $cliente->getNombre();
+
+            }))
           
             ->add('save', SubmitType::class, array('attr' => array('class' => 'btn btn-success'),
                                     
